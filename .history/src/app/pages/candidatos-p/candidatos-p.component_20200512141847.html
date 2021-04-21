@@ -1,0 +1,88 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-9">
+    <div class="container-fluid">
+        <div class="header-body">
+            <input type="text" placeholder="Buscar Nombre" name="filterNombre" [(ngModel)]="filterNombre" class="form-control col-sm-3" (ngModelChange)="takeAction()">
+            <input type="text" placeholder="Buscar Uid" name="filterR" [(ngModel)]="filterR" class="form-control col-sm-3" (ngModelChange)="takeAction()">
+            <input type="text" placeholder="Buscar Email" name="filterEmail" [(ngModel)]="filterEmail" class="form-control col-sm-3" (ngModelChange)="takeAction()">
+            <input type="text" placeholder="Buscar Etapa" name="filterFecha" [(ngModel)]="filterFecha" class="form-control col-sm-3" (ngModelChange)="takeAction()">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Candidatos en proceso</h3>
+                    <div class="text-lg-right">
+                        <button (click)="exportAsXLSX()" class="btn btn-success">
+                          <i class="far fa-file-excel"></i> Exportar
+                      </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+
+                    <table *ngIf="!cargando && candidatos.length > 0" class="table align-items-center table-flush animated fadeIn faster">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">UID</th>
+                                <th scope="col">Nombre Completo</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Etapa</th>
+                                <th scope="col">Fecha de registro</th>
+                                <th scope="col">Municicpio</th>
+                                <th scope="col">Telefono</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let candidato of candidatos| filtergnombre:filterNombre| filtergR:filterR|  filterEmail:filterEmail | filterFecha:filterFecha | paginate: {itemsPerPage: 10, currentPage: pageActual}; let i = index ">
+                                <td>{{candidato.idPaseador}}</td>
+                                <td>{{candidato.nombre}} {{candidato.apellidopa}} {{candidato.apellidoma}}</td>
+                                <td>{{candidato.email}}</td>
+                                <td>{{candidato.regproceso}}</td>
+                                <td>{{candidato.fechareg | date: 'dd/MM/yyyy'}}</td>
+                                <td>{{candidato.municipio}}</td>
+                                <td>{{candidato.telefono}}</td>
+                                <td class="text-right">
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/detallecandidato', candidato.id]">Detalle</a>
+                                            <a class="dropdown-item" href="javascript:void(0)" (click)="borrarCandi(candidato, i)">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="pagination justify-content-end mb-0">
+                        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!cargando && candidatos.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+    </div>
+
+</div>

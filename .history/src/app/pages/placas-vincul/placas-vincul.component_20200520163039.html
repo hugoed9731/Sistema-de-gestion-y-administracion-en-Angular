@@ -1,0 +1,91 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-9">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--9">
+    <!-- Table -->
+
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control col-sm-3" name="filterR" placeholder="Buscar..." [(ngModel)]="filterR" (ngModelChange)="takeAction()">
+            <br>
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Placas Vinculadas</h3>
+                    <!-- <div class="text-lg-right">
+                      <button routerLink="/register" class="btn btn-primary">
+                          <i class="fa fa-plus-circle"></i>
+                          Agregar
+                          </button>
+                  </div> -->
+                </div>
+                <div class="table-responsive">
+                    <table *ngIf="!cargando && perros.length > 0" class="table align-items-center table-flush animated fadeIn faster">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID Perro</th>
+                                <th scope="col">Nombre del Contacto</th>
+                                <th scope="col">Numero de Placa</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Lectura</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let perro of perros | filterR:filterR | paginate: {itemsPerPage: 10, currentPage: pageActual}; let i = index ">
+                                <th scope="row">{{i + 1}} </th>
+                                <td> {{ perro.uid }}</td>
+                                <td> {{ perro.nombreContacto }} </td>
+                                <td> {{ perro.QR }}</td>
+                                <td> {{ perro.telefono }}</td>
+                                <td>
+                                    <label *ngIf="!perro.lectura" class="badge badge-success">Si</label>
+                                    <label *ngIf="perro.lectura" class="badge badge-danger">No</label>
+                                </td>
+
+                                <td>
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-dark" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <button [routerLink]="['/detalleslec', usuario.uid]" class="dropdown-item">Detalles</button>
+                                            <!-- <button (click)="borrarUsuario( usuario, i )" class="dropdown-item">Eliminar</button> -->
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="pagination justify-content-end mb-0">
+                        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!cargando && perros.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+
+    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+
+    </div>

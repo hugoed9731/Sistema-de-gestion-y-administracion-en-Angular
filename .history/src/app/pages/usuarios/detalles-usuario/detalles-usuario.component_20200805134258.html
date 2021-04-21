@@ -1,0 +1,155 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+<div class="container mt--9">
+    <br>
+    <br>
+    <div class="row justify-content-center animated fadeIn faster">
+        <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="text-lg-right">
+                        <button class="btn btn-danger m-4" routerLink="/usuarios">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Usuario</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body" id="modalUser">
+                    <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+                        <h3>Habilitar Usuario</h3>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Ultima Conexion</label>
+                                        <input type="text" class="form-control" placeholder="Ultima Conexion" [(ngModel)]="usuario.ultima_vez" name="ultima_vez" disabled="disabled">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <button *ngIf="usuario.estatus" (click)="usuario.estatus = false" (click)="borrarUsuariobaner(usuario)" class="btn btn-outline-warning" type="button">
+                 
+                  <i class="fas fa-user-alt-slash"></i> 
+                  Suspendido
+              </button>
+
+                        <button *ngIf="!usuario.estatus" (click)="usuario.estatus = true" (click)="guardarbanned(usuario)" class="btn btn-outline-success" type="button">
+                          <i class="far fa-check-circle"></i>
+                   Habilitado
+                   
+                  </button>
+                        <button type="submit" class="btn btn-primary w-25">
+                  Guardar cambios
+                  </button>
+                        <hr>
+                        <h3>Datos Personales</h3>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="usuario.nombre" name="nombre" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Correo</label>
+                                        <input type="text" class="form-control" placeholder="Correo" [(ngModel)]="usuario.email" name="email" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Apellido paterno</label>
+                                        <input type="text" class="form-control" placeholder="apellido paterno" [(ngModel)]="usuario.apellido_Paterno" name="Apellido paterno" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Apellido Materno</label>
+                                        <input type="text" class="form-control" placeholder="apellido materno" [(ngModel)]="usuario.apellido_Materno
+                              " name="Apellido materno" disabled="disabled">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Contacto de Usuario</h3>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Calle</label>
+                                        <input type="text" class="form-control" placeholder="Calle" [(ngModel)]="usuario.calle" name="calle" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Num_ext</label>
+                                        <input type="text" class="form-control" placeholder="Num_ext" [(ngModel)]="usuario.num_ext" name="num_ext" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Num_int</label>
+                                        <input type="text" class="form-control" placeholder="Num_int" [(ngModel)]="usuario.num_int" name="num_int" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Codigo Postal</label>
+                                        <input type="text" class="form-control" placeholder="Codigo Postal" [(ngModel)]="usuario.cp" name="cp" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Estado</label>
+                                        <input type="text" class="form-control" placeholder="Estado" [(ngModel)]="usuario.estado" name="estado" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Delegacion</label>
+                                        <input type="text" class="form-control" placeholder="Delegacion" [(ngModel)]="usuario.delegacion" name="delegacion" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Telefono Casa</label>
+                                        <input type="text" class="form-control" placeholder="Telefono Casa" [(ngModel)]="usuario.telefono1" name="telefono1" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Telefono Celular</label>
+                                        <input type="text" class="form-control" placeholder="Telefono Celular" [(ngModel)]="usuario.telefono2" name="telefono2" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

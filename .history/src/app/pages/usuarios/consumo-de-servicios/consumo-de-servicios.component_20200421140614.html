@@ -1,0 +1,86 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-4">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--4">
+    <!-- Tabla -->
+    <div class="card shadow">
+        <div class="row">
+            <div class="col">
+                <div class="row text-right">
+                    <div class="col">
+                        <button class="btn btn-danger m-4" routerLink="/usuarios">
+                    <i class="fa fa-arrow-left"></i>
+                    Regresar
+                  </button>
+                    </div>
+                </div>
+                <div class="card-header border-light">
+                    <h3 class="mb-0">Ordenes de compra de usuario</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+
+                    <div class="table-responsive">
+                        <table class="table mt-5 animated fadeIn faster animated fadeIn faster">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">UID Paseador</th>
+                                    <th scope="col">Categoria </th>
+                                    <th scope="col">Calificacion</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Horas de Paseo</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let orden of ordenes | paginate: {itemsPerPage: 10, currentPage: pageActual} | filterj:filterPost ; let i = index ">
+                                    <th scope="row">{{i + 1}}</th>
+                                    <td>{{ orden.order_id }}</td>
+                                    <td>{{ orden.id_paseador }}</td>
+                                    <td>{{ orden.categoria}}</td>
+                                    <td>{{ orden.calificacion }}</td>
+                                    <td>{{ orden.operation_date }}</td>
+                                    <td>{{ orden.tiempo_paseo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div *ngIf="cargando" class=" alert alert-info text-center mt-3 animated fadeIn faster">
+            <h4 class="alert-heading">Cargando</h4>
+            <p>
+                <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+            </p>
+            <p class="mb-0">
+                Espere por favor
+            </p>
+
+        </div>
+        <div *ngIf="!cargando && ordenes.length === 0" class=" alert alert-warning text-center mt-3 animated fadeIn faster">
+            <h4 class="alert-heading">No hay registros</h4>
+            <p>
+                <i class="fa fa-exclamation  fa-2x"></i>
+            </p>
+
+
+        </div>
+    </div>

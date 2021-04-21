@@ -1,0 +1,96 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="col-md-12">
+                <input type="text" placeholder="Buscar Uid" name="filterR" [(ngModel)]="filterR" class="form-control col-sm-3" (ngModelChange)="takeAction()">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-right">
+            <button routerLink="/paseadorNew" class="btn btn-primary"> 
+         <i class="fa fa-plus"></i>
+         Agregar
+        </button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Paseadores</h3>
+                    <div class="text-lg-right">
+                        <button (click)="exportAsXLSX()" class="btn btn-success">
+                          <i class="far fa-file-excel"></i> Exportar
+                      </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table *ngIf="!cargando && paseadores.length > 0" class="table align-items-center table-flush animated fadeIn faster">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">UID</th>
+                                <th scope="col">Nombre Completo</th>
+                                <th scope="col">Municipio</th>
+                                <th scope="col">Municipio de trabajo</th>
+                                <th scope="col">Version</th>
+                                <th scope="col">Fecha de ultima conexion</th>
+                                <th scope="col">Activo/Inactivo</th>
+                                <th scope="col">Celular</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let Paseador of paseadores|  filtergR:filterR  | paginate: {itemsPerPage: 10, currentPage: pageActual}; let i = index ">
+                                <td>{{Paseador.idPaseador}}</td>
+                                <td>{{Paseador.nombre}} {{Paseador.aplellidopa}} {{Paseador.apellidoma}}</td>
+                                <td>{{Paseador.municipio}}</td>
+                                <td>{{Paseador.muntrabajo}}</td>
+                                <td>{{Paseador.through}}</td>
+                                <td>{{Paseador.ultima_vez | date: 'M/d/yy, h:mm a'}} </td>
+                                <td>
+                                    <span *ngIf="!Paseador.estadoC" class="badge badge-primary">Activo</span>
+                                    <span *ngIf="Paseador.estadoC" class="badge badge-danger">Inactivo</span>
+                                </td>
+                                <td>{{Paseador.celular}}</td>
+                                <td class="text-right">
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/detallepaseadorg', Paseador.idPaseador]">Editar</a>
+                                            <a class="dropdown-item" href="javascript:void(0)" (click)="borrarPase(Paseador, i)">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination justify-content-end mb-0">
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!cargando && paseadores.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+    </div>
+</div>

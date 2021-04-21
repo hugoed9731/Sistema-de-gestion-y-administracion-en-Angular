@@ -1,0 +1,455 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+</div>
+<div class="container mt--9">
+    <div class="row justify-content-center animated fadeIn faster">
+        <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="card-profile-image form-group">
+                        <!-- <input class="rounded-circle" type="file" accept=".png, .jpg" (change)="onUpload($event)"> -->
+                        <a href="javascript:void(0)">
+                            <img type="file" src="{{candidato.direcfoto}}" class="rounded-circle">
+                        </a>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Datos Generales</h3>
+                        </div>
+
+                        <div class="col-4 text-right">
+                            <a href="#!" class="btn btn-sm btn-primary" routerLink="/candidatos-p">Busqueda</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="guardar(f)" #f="ngForm">
+
+                        <h6 class="heading-small text-muted mb-4">Estado (Cuenta)</h6>
+
+                        <div class="form-group">
+                            <button *ngIf="!candidato.estadoC" (click)="candidato.estadoC = true" class="btn btn-outline-success w-30" type="button">
+                            <i class="fa fa-smile-wink"></i>
+                            Activo
+                        </button>
+                            <button *ngIf="candidato.estadoC" (click)="candidato.estadoC = false" class="btn btn-outline-danger w-30" type="button">
+                            <i class="fa fa-dizzy"></i>
+                            Inactivo
+                        </button>
+                        </div>
+                        <hr class="my-4" />
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label">Etapa</label>
+                                <input class="form-control form-control-alternative " type="text" [(ngModel)]="candidato.regproceso" name="regproceso" disabled>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">UID</label>
+                                    <input class="form-control form-control-alternative " type="text" [(ngModel)]="candidato.idPaseador" name="idPaseador" disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Email</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.email" name="email" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Informacion Personal</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Nombre</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.nombre" name="nombre">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Apellido Paterno</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.apellidopa" name="apellidopa">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Apellido Materno</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.apellidoma" name="apellidoma">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Genero</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.genero" name="genero">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Telefono</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.telefono" name="telefono">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Celular</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.celular" name="celular">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Fecha de Nacimiento</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.fnacimiento" name="fnacimiento">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Edad</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.edad" name="edad">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Talla playera</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.talla" name="talla">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Direccion</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Calle</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.calle" name="calle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Numero Interior</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.ninterior" name="ninterior">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Numero Exterior</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.numero" name="numero">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Colonia</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.colonia" name="colonia">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">C.P</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.cpostal" name="cpostal">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Municipio</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.municipio" name="municipio">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Estado</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.estado" name="estado">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Latitud</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.Latitude" name="Latitude">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Longitud</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.Longitude" name="Longitude">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Pais</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.pais" name="pais">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Referencias Personales</h6>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Referencia 1</label>
+                                    <input class="form-control form-control-alternative" type="text" placeholder="Nombre Completo" [(ngModel)]="candidato.referencia1" name="referencia1">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Referencia 2</label>
+                                    <input class="form-control form-control-alternative" type="text" placeholder="Nombre Completo" [(ngModel)]="candidato.referencia2" name="referencia2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control form-control-alternative" type="text" placeholder="Telefono" [(ngModel)]="candidato.reftelefono1" name="reftelefono1">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control form-control-alternative" type="text" placeholder="Telefono" [(ngModel)]="candidato.reftelefono2" name="reftelefono2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control form-control-alternative" type="text" placeholder="Tipo" [(ngModel)]="candidato.reftipo1" name="reftipo1">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control form-control-alternative" type="text" placeholder="Tipo" [(ngModel)]="candidato.reftipo2" name="reftipo2">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Documentos</h6>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h6>Foto de perfil</h6>
+                                    <a type="file" href="{{candidato.direcfoto}}" target="_blank"><i class="fas fa-file fa-3x"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h6>INE</h6>
+                                    <a type="file" href="{{candidato.ine}}" target="_blank"><i class="fas fa-file fa-3x"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h6>Comprobante de domicilio</h6>
+                                    <a type="file" href="{{candidato.comprodomi}}" target="_blank"><i class="fas fa-file fa-3x"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <h6>Acta de nacimiento</h6>
+                                    <a type="file" href="{{candidato.actnac}}" target="_blank"><i class="fas fa-file fa-3x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Perfil Laboral</h6>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Disponibilidad</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.disponibilidad" name="disponibilidad">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Experiencia de ingreso</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.expecingreso" name="expecingreso">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Plan de datos</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.gbdata" name="gbdata">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Municipio para trabajar</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.muntrabajo" name="muntrabajo">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4" id="center">Evaluacion</h6>
+                        <h6 class="heading-small text-muted mb-4">Experiencia</h6>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Como se entero</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.menteraste" name="menteraste">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Experiencia de paseador</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.exppaseador" name="exppaseador">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Tipo de experiencia</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.exptipo" name="exptipo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Tiempo de experiencia</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.exptiempo" name="exptiempo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Test de confianza</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.estatustest" name="estatustest">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Test Calificacion</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.calitutorial" name="calitutorial">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Capacitación o certificación</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.precapacita" name="precapacita">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Costo Promedio</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.costopromedio" name="costopromedio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Plataformas</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.plataformas" name="plataformas">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Plataformas para promocion</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.promoplata" name="promoplata">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Kit</h6>
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Monto</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.kitpaseador" name="kitpaseador">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Datos Bancarios</h6>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Institucion Bancaria</label>
+                                    <select [(ngModel)]="candidato.banco" name="banco" class="form-control">
+                                        <option selected>Institucion Bancaria...</option>
+                                        <option>HSBC</option>
+                                        <option>Banamex</option>
+                                        <option>Banorte</option>
+                                        <option>Santander</option>
+                                        <option>Bancomer</option>
+                                        <option>Scotiabank</option>
+                                        <option>Banjio</option>
+                                        <option>BanRegio</option>
+                                        <option>Banco Multiva</option>
+                                        <option>Inbursa</option>
+                                        <option>Barjersito</option>
+                                        <option>Banco Azteca</option>
+                                        <option>Bancoopel</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Clave interbancaria</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.claveib" name="claveib">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Numero de cuenta</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.ncuenta" name="ncuenta">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Numero de tarjeta</label>
+                                    <input class="form-control form-control-alternative" type="text" [(ngModel)]="candidato.ntarjeta" name="ntarjeta">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary w-25">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                      </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

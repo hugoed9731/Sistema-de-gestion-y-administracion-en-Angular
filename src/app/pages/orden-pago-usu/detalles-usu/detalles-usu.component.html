@@ -1,0 +1,164 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container mt--9">
+
+    <div class="row justify-content-center animated fadeIn faster">
+        <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+
+                    <div class="text-lg-right">
+                        <button class="btn btn-danger" routerLink="/orden-pago-usu">
+                      <i class="fa fa-arrow-left"></i>
+                      Regresar
+                    </button>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Orden de pago de Usuario</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body" id="modalUser">
+                    <form (ngSubmit)="guardar( f )" #f="ngForm">
+                        <h6 class="heading-small text-muted mb-4">Informacion de Orden del usuario</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"> Orden Id</label>
+                                        <input class="form-control form-control-alternative" type="text" class="form-control" placeholder="Order ID" [(ngModel)]="usuario.order_id" name="order_id" disabled="disabled">
+                                        <small class="form-text text-muted">Orden Generada</small>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Categoria</label>
+                                        <input type="text" class="form-control" placeholder="Categoria" [(ngModel)]="usuario.categoria" name="categoria" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> id_Paseador</label>
+                                        <input type="text" class="form-control" placeholder="id_paseador" [(ngModel)]="usuario.id_paseador" name="id_paseador" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> numero_Paseador</label>
+                                        <input type="text" class="form-control" placeholder="numero_paseador" [(ngModel)]="usuario.numero_paseador" name="numero_paseador" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> id_Usuario</label>
+                                        <input type="text" class="form-control" placeholder="id_usuario" [(ngModel)]="usuario.id_usr" name="id_usr" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> numero_Usuario</label>
+                                        <input type="text" class="form-control" placeholder="numero_usuario" [(ngModel)]="usuario.numero_usuario" name="numero_usuario" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Numero de Perros</label>
+                                        <input type="text" class="form-control" placeholder="Numero de perros" [(ngModel)]="usuario.num_perros" name="num_perros" disabled="disabled">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Fecha de Paseo</label>
+                                        <input type="text" class="form-control" placeholder="Fecha de paseo" [(ngModel)]="usuario.operation_date" name="operation_date" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Calificacion</label>
+                                        <input type="text" class="form-control" placeholder="Calificacion" [(ngModel)]="usuario.calificacion" name="calificacion" disabled="disabled">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Monto</label>
+                                        <input type="text" class="form-control" placeholder="Monto" [(ngModel)]="usuario.amount" name="amount" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Cuota</label>
+                                        <input type="text" class="form-control" placeholder="Cuota" [(ngModel)]="usuario.fee" name="fee" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Direccion</label>
+                                        <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]="usuario.direccion" name="direccion" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Timestamp</label>
+                                        <input type="text" class="form-control" placeholder="timestamp" [(ngModel)]="usuario.timestamp" name="timestamp" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Tiempo_Paseo</label>
+                                        <input type="text" class="form-control" placeholder="tiempo_paseo" [(ngModel)]="usuario.tiempo_paseo" name="tiempo_paseo" disabled="disabled">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Tipo de paseo</label>
+                                        <br>
+                                        <label *ngIf="usuario.agendado" class="badge badge-success">Agendado</label>
+                                        <label *ngIf="!usuario.agendado" class="badge badge-danger">Inmediato</label>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <!-- <div class="col">
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary w-25">
+                                            <i class="fa fa-save"></i>
+                                                    Guardar
+                                </button>
+
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

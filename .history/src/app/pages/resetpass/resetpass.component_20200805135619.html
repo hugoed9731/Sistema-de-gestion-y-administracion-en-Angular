@@ -1,0 +1,86 @@
+<div class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+        <div class="header-body text-center mb-6">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-md-8">
+                    <h1 class="text-white">Recupera tu contraseña</h1>
+                    <!-- <p class="text-lead text-light">Hola a todos.</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container mt--9 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card bg-secondary shadow border-0">
+                <div class="card-header bg-transparent pb-1">
+                    <div class="text-muted text-center mt-1 mb-2"><small>Ingresa tu correo electronico:</small></div>
+                    <!-- <div class="btn-wrapper text-center">
+                        <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                            <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
+                            <span class="btn-inner--text" (click)="logi('google')">Google</span>
+                        </a> 
+                    </div>  -->
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                    <!-- <div class="text-center text-muted mb-4">
+                        <small>Or sign in with credentials</small>
+                    </div> -->
+
+                    <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+
+                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                            </div>
+                            <input type="email" class="form-control " [(ngModel)]="emailInput" id="email" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group" *ngIf="!isForgotPassword">
+                        &nbsp; &nbsp; &nbsp;
+
+
+                        <div class="text-center">
+                            <button class="btn btn-primary" (click)="this.isForgotPassword= true;">
+                                        Recuperar
+                                    </button>
+                        </div>
+
+                    </div>
+                    <div class="form-group" *ngIf="isForgotPassword">
+
+                        <button type="button" class="btn" (click)="this.isForgotPassword=
+                                    false;">Cancelar</button>
+                        <button type="button" class="btn btn-primary" (click)="forgotPassword()">Recuperar contraseña</button>
+                    </div>
+                    <div class="alert alert-{{responseMessageType}}" role="alert" *ngIf="responseMessage.length">
+                        {{responseMessage}}
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <a routerLink="/resetpass" href="javascript:void(0)" class="text-light" routerLink="/login"><small>Regresar</small></a>
+                </div>
+
+                <div class="col-6 text-right">
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

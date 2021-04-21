@@ -1,0 +1,106 @@
+<style>
+    #foto {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+</style>
+<div class="header bg-gradient-danger py-7 py-lg-8">
+    <!-- Mask -->
+    <span class="mask bg-gradient-danger"></span>
+    <!-- Header container -->
+    <!-- d-flex -->
+    <div class="container-fluid d-inline align-items-center">
+        <div class="row">
+            <div class="col-lg-8 mt--2 col-md-10 ">
+                <h1 class="display-2 text-white text-center">{{usuario.nombre}} {{usuario.apellidoMaterno}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt--6">
+    <div class="row justify-content-center">
+
+        <div class="col-xl-8 order-xl-1">
+
+            <div class="card bg-secondary shadow">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="card-profile-image form-group" id="estilo-foto">
+                            <a href="javascript:void(0)">
+                                <i class="fas fa-camera text-dark">
+                                <img type="file" src="{{ usuario.PhotoUrl}}" class="rounded-circle">
+                                <input class="rounded-circle justify-content-center"id="foto" type="file" accept=".png, .jpg" 
+                                name="PhotoUrl"(change)="onUpload($event)">
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Mi cuenta</h3>
+                            <!-- </div>
+
+                    </div> -->
+                        </div>
+                        <div class="card-body" id="modalUser">
+                            <form>
+                                <h6 class="heading-small text-muted mb-4">Informacion del usuario</h6>
+                                <div class="pl-lg-4">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Nombre(s)</label>
+                                                <input type="text" id="input-nombre" class="form-control form-control-alternative" placeholder="Nombre" [(ngModel)]="usuario.nombre" name="nombre" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-username">Apellido Paterno</label>
+                                                <input type="text" id="user-profile" class="form-control form-control-alternative" placeholder="Apellido Paterno" [(ngModel)]="usuario.apellidoPaterno" name="apellidoPaterno" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-username">Apellido Materno</label>
+                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Apellido Materno" [(ngModel)]="usuario.apellidoMaterno" name="apellidoMaterno" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-username">Empresa</label>
+                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Empresa" [(ngModel)]="usuario.Empresa" name="Empresa" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Correo Electronico</label>
+                                                <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" [(ngModel)]="usuario.email" name="email" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Rol</label>
+                                                <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Rol" [(ngModel)]="usuario.rol" name="Rol" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

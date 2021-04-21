@@ -1,0 +1,155 @@
+<style>
+    #div_file {
+        position: relative;
+        /*para que el input este dentro del div*/
+    }
+    
+    #btn_photo {
+        position: absolute;
+        /* para poder manipular el boton */
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        /* esto es para que todo se ajuste al ancho y alto del div */
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+</style>
+<div class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+        <div class="header-body text-center mb-7">
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container mt--9 pb-9">
+    <!-- Table -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card bg-secondary shadow border-0">
+                <div class="card-header bg-transparent pb-3">
+                    <h3 class="mb-0">Alta de Usuarios del Sistema</h3>
+                    <div class="text-lg-right">
+                        <button class="btn btn-danger" routerLink="/tables">
+                          <i class="fa fa-arrow-left"></i>
+                          Regresar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body px-lg-5 py-lg-1">
+                    <div class="text-center text-muted mb-4">
+                        <!-- <small>Or sign up with credentials</small> -->
+                    </div>
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm" role="form">
+                        <div class="form-group bg-white">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger animated fadeIn">El nombre es obligatorio</span>
+                                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Nombre" type="text" name="nombre" [(ngModel)]="usuario.nombre" [(ngModel)]="usu.nombre" pattern="^[A-Za-z ]+$" minlength="2" required placeholder="Nombre">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span *ngIf="f.submitted && f.controls['apellidoPaterno'].errors" class="text-danger animated fadeIn">El Apellido es obligatorio</span>
+                                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Apellido Paterno" type="text" name="apellidoPaterno" [(ngModel)]="usuario.apellidoPaterno" [(ngModel)]="usu.apellidoPaterno" minlength="2" required placeholder="ApellidoPaterno">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span *ngIf="f.submitted && f.controls['apellidoMaterno'].errors" class="text-danger animated fadeIn">El Apellido es obligatorio</span>
+                                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Apellido Materno" type="text" name="apellidoMaterno" [(ngModel)]="usuario.apellidoMaterno" [(ngModel)]="usu.apellidoMaterno" minlength="2" required placeholder="ApellidoMaterno">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span *ngIf="f.submitted && f.controls['Empresa'].errors" class="text-danger animated fadeIn">La Empresa es obligatoria</span>
+                                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Empresa" type="text" name="Empresa" [(ngModel)]="usuario.Empresa" [(ngModel)]="usu.Empresa" minlength="2" required placeholder="Empresa">
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span *ngIf="f.submitted && f.controls['rol'].errors" class="text-danger animated fadeIn">El Rol es obligatorio</span>
+                                <label class="input-group-text" for="inputGroupSelect01"><i class="ni ni-hat-3"></i>Rol</label>
+                            </div>
+                            <select class="custom-select" name="rol" [(ngModel)]="usuario.rol" [(ngModel)]="usu.rol" required id="inputGroupSelect01">
+                              <option value="Admin">Admin</option>
+                              <option value="Finanzas">Finanzas</option>
+                              <option value="Ventas">Ventas</option>
+                              <option value="Monitoreo">Monitoreo</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span *ngIf="f.submitted && f.controls['email'].errors" class="text-danger animated fadeIn">El correo es obligatorio</span>
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+
+                                </div>
+                                <input class="form-control" placeholder="Email" type="email" name="email" [(ngModel)]="usuario.email" [(ngModel)]="usu.email" required email placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend" data-validate="Password is required">
+                                    <span *ngIf="f.submitted && f.controls['pass'].errors" class="text-danger animated fadeIn">Debe de ser 6 caracteres</span>
+                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+
+                                </div>
+                                <input class="form-control" placeholder="Password" type="password" name="pass" [(ngModel)]="usuario.password" minlength="6" required placeholder="Contraseña">
+                            </div>
+                        </div>
+
+                        <div class="form-group btn btn-primary px-3" id="div_file">
+                            <!-- <h5 class="text-white" id="texto">Seleccionar Imagen:</h5> -->
+                            <i class="fa fa-image"></i> Foto de perfil
+                            <input type="file" accept=".png, jpg" id="btn_photo" name="PhotoUrl" [(ngModel)]="usuario.PhotoUrl" [(ngModel)]="usu.PhotoUrl" (change)="onUpload($event)">
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadPercent | async) + '%'">
+                            </div>
+                        </div>
+                        <br>
+                        <input #imageUser type="hidden" [value]="urlImage | async">
+                        <div class="text-center">
+                            <button *ngIf="urlImage | async ; else btnDisable " type="submit" class="btn btn-primary mt-4">
+                                <i class="fa fa-save"></i>
+                                Registrar</button>
+                        </div>
+
+                        <ng-template #btnDisable>
+                            <button type="submit" disabled=true class="btn btn-primary mt-4 top--4">
+                                <i class="fa fa-save"></i>
+                                Registrar</button>
+                        </ng-template>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

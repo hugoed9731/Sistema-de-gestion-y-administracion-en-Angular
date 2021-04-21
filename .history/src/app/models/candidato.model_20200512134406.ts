@@ -1,0 +1,64 @@
+export class CandidatoModel{
+    idPaseador:string;
+    nombre:string;
+    apellidopa:string;
+    apellidoma:string;
+    genero:string;
+    email:string;
+    telefono:string;
+    fnacimiento:string;
+    celular:string;
+    edad:string;
+    calle:string;
+    numero:string;
+    colonia:string;
+    cpostal:string;
+    municipio:string;
+    calitutorial:string;
+    estado:string;
+    pais:string;
+    referencia1:string;
+    referencia2:string;
+    reftelefono1:string;
+    reftelefono2:string;
+    reftipo1:string;
+    reftipo2:string;
+    actnac:string;
+    comprodomi:string;
+    direcfoto:string;
+    ine:string;
+    exppaseador:string;
+    exptipo:string;
+    promoplata:string;
+    exptiempo:string;
+    estatustest:string;
+    disponibilidad:string;
+    expecingreso:string;
+    gbdata:string;
+    muntrabajo:string;
+    banco:string;
+    ncuenta:string;
+    claveib:string;
+    talla:string;
+    kitpaseador:string;
+    regproceso:string;
+    estadoC:boolean;
+    etapa:string;
+    fechareg:string;
+    Latitude:string;
+    Longitude:string;
+    ninterior:string;
+    nexterior:string;
+    ntarjeta:string;
+    plataformas:string;
+    precapacita:string;
+    costopromedio:string;
+    menteraste:string;
+    
+    
+    
+    constructor(){
+        this.estadoC=true;
+    }
+    
+    }

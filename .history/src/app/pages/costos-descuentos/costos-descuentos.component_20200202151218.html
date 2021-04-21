@@ -1,0 +1,78 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--1">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <!-- <input type="text" class="form-control col-sm-3" name="filterPost" placeholder="Buscar..." [(ngModel)]="filPost"> -->
+            <!-- <br>
+            <br> -->
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Costos y Descuentos</h3>
+                </div>
+                <div class="table-responsive">
+                    <table *ngIf="!cargando && costos.length > 0" class="table align-items-center table-flush animated fadeIn faster">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th class="col">Tipo</th>
+                                <th scope="col">1</th>
+                                <th scope="col">2</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of costos | paginate: {itemsPerPage: 10, currentPage: pageActual};  let i = index ">
+                                <th scope="row">{{i + 1}} </th>
+                                <td> {{ usuario.uid }}</td>
+                                <td> {{ usuario.uno}} </td>
+                                <td> {{ usuario.dos }} </td>
+                                <td>
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-dark" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <button [routerLink]="['/detalles-pas', usuario.uid]" class="dropdown-item">Detalles...</button>
+                                            <!-- <button (click)="borrarUsuario( usuario, i )" class="dropdown-item">Eliminar</button> -->
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="pagination justify-content-end mb-0">
+                        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div *ngIf="!cargando && costos.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+
+    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+
+    </div>

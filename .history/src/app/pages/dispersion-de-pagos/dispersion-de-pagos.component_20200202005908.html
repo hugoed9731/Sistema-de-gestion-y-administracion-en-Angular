@@ -1,0 +1,87 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control col-sm-3" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
+            <br>
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Dispercion de Pagos</h3>
+                </div>
+                <div class="table-responsive">
+                    <table id="excel-table" *ngIf="!cargando && Dispersion.length > 0" class="table align-items-center table-flush animated fadeIn faster">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">UID</th>
+                                <th scope="col">Num_order</th>
+                                <th scope="col">Numero de Perros</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">banco</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of Dispersion  | filter:filterPost | paginate: {itemsPerPage: 10, currentPage: pageActual};  let i = index ">
+                                <th scope="row">{{i + 1}} </th>
+                                <td> {{ usuario.uid }}</td>
+                                <td> {{ usuario.order_id }}</td>
+                                <td> {{ usuario.num_perros}} </td>
+                                <td> {{ usuario.categoria }} </td>
+                                <td> {{ usuario.amount }} </td>
+                                <td>
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <button [routerLink]="['/editar', usuario.uid]" class="dropdown-item">Editar</button>
+                                            <!-- <button (click)="borrarUsuario( usuario, i )" class="dropdown-item">Eliminar</button> -->
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="pagination justify-content-end mb-0">
+                        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="text-center">
+        <a (click)="exportexcel()" class="btn btn-outline-primary mt-4" style="width: 200px;">
+            <i class="fa fa-plus"></i> Exportar
+        </a>
+    </div>
+
+
+    <div *ngIf="!cargando && Dispersion.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+
+    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+
+    </div>

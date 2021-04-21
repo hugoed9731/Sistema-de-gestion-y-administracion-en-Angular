@@ -1,0 +1,577 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+</div>
+<div class="container mt--9">
+    <div class="row justify-content-center animated fadeIn faster">
+        <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Registrar Paseador</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="guardar(f)" #f="ngForm">
+                        <!-- <hr class="my-4" /> -->
+                        <h6 class="heading-small text-muted mb-4">Ingresar dos simples datos:</h6>
+                        <div class="pl-lg-6">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Correo Electronico</label>
+                                        <input class="form-control form-control-alternative" type="email" [(ngModel)]="new.email" [(ngModel)]="paseador.email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Contraseña</label>
+                                        <input class="form-control form-control-alternative" type="text" [(ngModel)]="new.password" name="password">
+                                    </div>
+                                </div>
+                                <div class="auto" id="auto" style="display: none">
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.apellidopa" name="apellidopa" type="text" class="form-control" placeholder="Apellido Paterno">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.apellidoma" name="apellidoma" type="text" class="form-control" placeholder="Apellido Materno">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.genero" name="genero" type="text" class="form-control" placeholder="Genero">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.celular" name="celular" type="text" class="form-control" placeholder="Celular">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.telefono" name="telefono" type="text" class="form-control" placeholder="Telefono">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.curp" name="curp" type="text" class="form-control" placeholder="C.U.R.P">
+                                        </div>
+                                    </div>
+                                    <H2>Datos de direccion</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.calle" name="calle" type="text" class="form-control" placeholder="Calle">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.ninterior" name="ninterior" type="text" class="form-control" placeholder="Numero Interior">
+                                            </div>
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.nexterior" name="nexterior" type="text" class="form-control" placeholder="Numero Exterior">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.colonia" name="colonia" type="text" class="form-control" placeholder="Colonia">
+                                            </div>
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.cpostal" name="cpostal" type="text" class="form-control" placeholder="Codigo Postal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.municipio" name="municipio" type="text" class="form-control" placeholder="Municipio">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.estado" name="estado" class="form-control">
+                                              <option selected>Selecciona tu estado</option>
+                                      <option>Estado de Mexico</option>
+                                      <option>CIudad de Mexico</option>
+                                      <option>Puebla</option>
+                                      <option>Hidalgo</option>
+                                      <option>Queretaro</option>
+                                      <option>Morelos</option>
+                                      <option>Tlaxcala</option>
+                                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.pais" name="pais" class="form-control">
+                                            <option  selected>Selecciona tu Pais</option>
+                                    <option>Mexico</option>
+                                  </select>
+                                        </div>
+                                    </div>
+                                    <H2>Tamaño de playera para Caminandog</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.talla" name="talla" class="form-control">
+                                          <option selected>Selecciona tu tamaño de playera</option>
+                                  <option>Pequeña</option>
+                                  <option>Mediana</option>
+                                  <option>Grande</option>
+                                </select>
+                                        </div>
+                                    </div>
+                                    <H2>Ingrese los siguientes datos(Parte 2)</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">Por que medio(s) te enteraste de nosotros</label>
+                                            <select [(ngModel)]="paseador.menteraste" name="menteraste" class="form-control" id="exampleFormControlSelect1">
+                                          <option selected>Seleccionar...</option>
+                                          <option>Facebook</option>
+                                          <option>Twitter</option>
+                                          <option>Nuestra pagina web</option>
+                                          <option>Amistades</option>
+                                          <option>Otro</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">Cual es el tiempo que pretendes dedicarle a Caminandog, como paseador de perros</label>
+                                            <select [(ngModel)]="paseador.disponibilidad" name="disponibilidad" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected>Seleccionar...</option>
+                                        <option>Tiempo completo</option>
+                                        <option>Medio Tiempo(Matutino)</option>
+                                        <option>Medio Tiempo(Vespertino)</option>
+                                        <option>Fines de semana</option>
+                                        <option>Esporadico o flexible</option>
+                                      </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">¿Cual es tu expectativa de ingreso mensual?</label>
+                                            <select [(ngModel)]="paseador.expecingreso" name="expecingreso" class="form-control" id="exampleFormControlSelect1">
+                                      <option selected>Seleccionar...</option>
+                                      <option>De $1,000 a $2,900 pesos</option>
+                                      <option>De $3,000 a $5,900 pesos</option>
+                                      <option>De $6,000 a $8,900 pesos</option>
+                                      <option>De $9,000 a $12,000 pesos</option>
+                                      <option>Mas de $12,000 pesos mensuales</option>
+                                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">¿Cual es tu plan de datos mensual?</label>
+                                            <select [(ngModel)]="paseador.gbdata" name="gbdata" class="form-control" id="exampleFormControlSelect1">
+                                                <option selected>Seleccionar...</option>
+                                              <option>De 0.5 GB a 1.4 GB</option>
+                                              <option>De 1.5 GB a 2.4 GB</option>
+                                              <option>De 2.5 GB o mas GB</option>
+                                              <option>No cuento con plan de datos, solo hago recargas</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">En que municipio/delegacion te gustaria trabajar</label>
+                                            <select [(ngModel)]="paseador.muntrabajo" name="muntrabajo" class="form-control" id="exampleFormControlSelect1">
+                                                <option selected>Seleccionar...</option>
+                                              <option>Àlvaro Obregòn</option>
+                                              <option>Azcapotzalco</option>
+                                              <option>Benito Juàrez</option>
+                                              <option>Coyoacàn</option>
+                                              <option>Cuajimalpa de Morelos</option>
+                                              <option>Cuauhtemoc</option>
+                                              <option>Miguel Hidalgo</option>
+                                              <option>Tlalpan</option>
+                                              <option>Atizapàn de Zaragoza</option>
+                                              <option>Coacalco de Berriozàbal</option>
+                                              <option>Cuautitlàn</option>
+                                              <option>Cuautitlàn Izcalli</option>
+                                              <option>Huixquilucan</option>
+                                              <option>Metepec</option>
+                                              <option>Naucalpan de Juàrez</option>
+                                              <option>Tlalnepantla de Baz</option>
+                                              <option>Toluca</option>
+                                              <option>Tultitlàn</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Tienes experiencia como paseador de perros</label>
+                                        <br>
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.exppaseador" name="exppaseador" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <H2>Ingrese datos(parte 3):</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="formGroupExampleInput">Primer referencia</label>
+                                            <input [(ngModel)]="paseador.referencia1" name="referencia1" type="text" class="form-control" placeholder="Nombre Completo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.reftelefono1" name="reftelefono1" type="text" class="form-control" placeholder="Celular">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.reftipo1" name="reftipo1" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected>Seleccionar...</option>
+                                        <option>Familiar</option>
+                                        <option>Amistad</option>
+                                        <option>Laboral</option>
+                                      </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="formGroupExampleInput">Segunda referencia</label>
+                                            <input [(ngModel)]="paseador.referencia2" name="referencia2" type="text" class="form-control" placeholder="Nombre Completo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.reftelefono2" name="reftelefono2" type="text" class="form-control" placeholder="Celular">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.reftipo2" name="reftipo2" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected>Seleccionar...</option>
+                                        <option>Familiar</option>
+                                        <option>Amistad</option>
+                                        <option>Laboral</option>
+                                      </select>
+                                        </div>
+                                    </div>
+                                    <H2>Ingrese datos(parte 4):</H2>
+                                    <b>¿Cuentas con una tarjeta de débito para las transferencias de tus ganancias por la realización de paseos?</b>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.banco" name="banco" class="form-control" id="exampleFormControlSelect1">
+                                  <option selected>Institucion Bancaria...</option>
+                                  <option>HSBC</option>
+                                  <option>Banamex</option>
+                                  <option>Banorte</option>
+                                  <option>Santander</option>
+                                  <option>Bancomer</option>
+                                  <option>Scotiabank</option>
+                                  <option>Banjio</option>
+                                  <option>BanRegio</option>
+                                  <option>Banco Multiva</option>
+                                  <option>Inbursa</option>
+                                  <option>Barjersito</option>
+                                  <option>Banco Azteca</option>
+                                  <option>Bancoopel</option>
+                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.ncuenta" name="ncuenta" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nùmero de tarjeta">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.claveib" name="claveib" type="text" class="form-control" id="formGroupExampleInput" placeholder="Clave Interbancaria">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.apellidopa" name="apellidopa" type="text" class="form-control" placeholder="Apellido Paterno">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.apellidoma" name="apellidoma" type="text" class="form-control" placeholder="Apellido Materno">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.genero" name="genero" type="text" class="form-control" placeholder="Genero">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.celular" name="celular" type="text" class="form-control" placeholder="Celular">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.telefono" name="telefono" type="text" class="form-control" placeholder="Telefono">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.curp" name="curp" type="text" class="form-control" placeholder="C.U.R.P">
+                                        </div>
+                                    </div>
+                                    <H2>Datos de direccion</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.calle" name="calle" type="text" class="form-control" placeholder="Calle">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.ninterior" name="ninterior" type="text" class="form-control" placeholder="Numero Interior">
+                                            </div>
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.nexterior" name="nexterior" type="text" class="form-control" placeholder="Numero Exterior">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.colonia" name="colonia" type="text" class="form-control" placeholder="Colonia">
+                                            </div>
+                                            <div class="col-4">
+                                                <input [(ngModel)]="paseador.cpostal" name="cpostal" type="text" class="form-control" placeholder="Codigo Postal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.municipio" name="municipio" type="text" class="form-control" placeholder="Municipio">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.estado" name="estado" class="form-control">
+              <option selected>Selecciona tu estado</option>
+      <option>Estado de Mexico</option>
+      <option>CIudad de Mexico</option>
+      <option>Puebla</option>
+      <option>Hidalgo</option>
+      <option>Queretaro</option>
+      <option>Morelos</option>
+      <option>Tlaxcala</option>
+    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.pais" name="pais" class="form-control">
+            <option  selected>Selecciona tu Pais</option>
+    <option>Mexico</option>
+  </select>
+                                        </div>
+                                    </div>
+                                    <H2>Tamaño de playera para Caminandog</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.talla" name="talla" class="form-control">
+          <option selected>Selecciona tu tamaño de playera</option>
+  <option>Pequeña</option>
+  <option>Mediana</option>
+  <option>Grande</option>
+</select>
+                                        </div>
+                                    </div>
+                                    <H2>Ingrese los siguientes datos(Parte 2)</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">Por que medio(s) te enteraste de nosotros</label>
+                                            <select [(ngModel)]="paseador.menteraste" name="menteraste" class="form-control" id="exampleFormControlSelect1">
+          <option selected>Seleccionar...</option>
+          <option>Facebook</option>
+          <option>Twitter</option>
+          <option>Nuestra pagina web</option>
+          <option>Amistades</option>
+          <option>Otro</option>
+        </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">Cual es el tiempo que pretendes dedicarle a Caminandog, como paseador de perros</label>
+                                            <select [(ngModel)]="paseador.disponibilidad" name="disponibilidad" class="form-control" id="exampleFormControlSelect1">
+        <option selected>Seleccionar...</option>
+        <option>Tiempo completo</option>
+        <option>Medio Tiempo(Matutino)</option>
+        <option>Medio Tiempo(Vespertino)</option>
+        <option>Fines de semana</option>
+        <option>Esporadico o flexible</option>
+      </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">¿Cual es tu expectativa de ingreso mensual?</label>
+                                            <select [(ngModel)]="paseador.expecingreso" name="expecingreso" class="form-control" id="exampleFormControlSelect1">
+      <option selected>Seleccionar...</option>
+      <option>De $1,000 a $2,900 pesos</option>
+      <option>De $3,000 a $5,900 pesos</option>
+      <option>De $6,000 a $8,900 pesos</option>
+      <option>De $9,000 a $12,000 pesos</option>
+      <option>Mas de $12,000 pesos mensuales</option>
+    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">¿Cual es tu plan de datos mensual?</label>
+                                            <select [(ngModel)]="paseador.gbdata" name="gbdata" class="form-control" id="exampleFormControlSelect1">
+                <option selected>Seleccionar...</option>
+              <option>De 0.5 GB a 1.4 GB</option>
+              <option>De 1.5 GB a 2.4 GB</option>
+              <option>De 2.5 GB o mas GB</option>
+              <option>No cuento con plan de datos, solo hago recargas</option>
+            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="exampleFormControlSelect1">En que municipio/delegacion te gustaria trabajar</label>
+                                            <select [(ngModel)]="paseador.muntrabajo" name="muntrabajo" class="form-control" id="exampleFormControlSelect1">
+                <option selected>Seleccionar...</option>
+              <option>Àlvaro Obregòn</option>
+              <option>Azcapotzalco</option>
+              <option>Benito Juàrez</option>
+              <option>Coyoacàn</option>
+              <option>Cuajimalpa de Morelos</option>
+              <option>Cuauhtemoc</option>
+              <option>Miguel Hidalgo</option>
+              <option>Tlalpan</option>
+              <option>Atizapàn de Zaragoza</option>
+              <option>Coacalco de Berriozàbal</option>
+              <option>Cuautitlàn</option>
+              <option>Cuautitlàn Izcalli</option>
+              <option>Huixquilucan</option>
+              <option>Metepec</option>
+              <option>Naucalpan de Juàrez</option>
+              <option>Tlalnepantla de Baz</option>
+              <option>Toluca</option>
+              <option>Tultitlàn</option>
+            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Tienes experiencia como paseador de perros</label>
+                                        <br>
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.exppaseador" name="exppaseador" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <H2>Ingrese datos(parte 3):</H2>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="formGroupExampleInput">Primer referencia</label>
+                                            <input [(ngModel)]="paseador.referencia1" name="referencia1" type="text" class="form-control" placeholder="Nombre Completo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.reftelefono1" name="reftelefono1" type="text" class="form-control" placeholder="Celular">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.reftipo1" name="reftipo1" class="form-control" id="exampleFormControlSelect1">
+        <option selected>Seleccionar...</option>
+        <option>Familiar</option>
+        <option>Amistad</option>
+        <option>Laboral</option>
+      </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <label for="formGroupExampleInput">Segunda referencia</label>
+                                            <input [(ngModel)]="paseador.referencia2" name="referencia2" type="text" class="form-control" placeholder="Nombre Completo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.reftelefono2" name="reftelefono2" type="text" class="form-control" placeholder="Celular">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.reftipo2" name="reftipo2" class="form-control" id="exampleFormControlSelect1">
+        <option selected>Seleccionar...</option>
+        <option>Familiar</option>
+        <option>Amistad</option>
+        <option>Laboral</option>
+      </select>
+                                        </div>
+                                    </div>
+                                    <H2>Ingrese datos(parte 4):</H2>
+                                    <b>¿Cuentas con una tarjeta de débito para las transferencias de tus ganancias por la realización de paseos?</b>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <select [(ngModel)]="paseador.banco" name="banco" class="form-control" id="exampleFormControlSelect1">
+  <option selected>Institucion Bancaria...</option>
+  <option>HSBC</option>
+  <option>Banamex</option>
+  <option>Banorte</option>
+  <option>Santander</option>
+  <option>Bancomer</option>
+  <option>Scotiabank</option>
+  <option>Banjio</option>
+  <option>BanRegio</option>
+  <option>Banco Multiva</option>
+  <option>Inbursa</option>
+  <option>Barjersito</option>
+  <option>Banco Azteca</option>
+  <option>Bancoopel</option>
+</select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.ncuenta" name="ncuenta" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nùmero de tarjeta">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-4">
+                                            <input [(ngModel)]="paseador.claveib" name="claveib" type="text" class="form-control" id="formGroupExampleInput" placeholder="Clave Interbancaria">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary w-25">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                      </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
